@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}}></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div class="full-div"> 
+          <div id="using-templates">
+            <h2>
+              <a href="https://docs.unity3d.com/2021.1/Documentation/Manual/webgl-templates.html" target="_blank">
+                <span class="material-icons-outlined">launch</span>
+                Using WebGL templates
+              </a>
+            </h2>
+          </div>
+          <div id="unity-fullscreen-button"></div>
+          <div id="unity-webgl-logo"></div>
+        </div>
+        <div class="full-div"> 
+          <div class="full-div">
+            <h1>{{{ PRODUCT_NAME }}} (v{{{ PRODUCT_VERSION }}})</h1>
+          </div>
+          <div class="full-div">
+            <h4>By <b>{{{ COMPANY_NAME }}}</b></h4>
+          </div>
+          <div class="half-div hide-able">Unity Version: <b>{{{ UNITY_VERSION }}}</b></div>
+          <div class="half-div hide-able">Use WebAssembly: <b>{{{ USE_WASM }}}</b></div>
+          <div class="half-div hide-able">Development Player: <b>{{{ DEVELOPMENT_PLAYER }}}</b></div>
+          <div class="half-div hide-able">Use WebGL 1.0: <b>{{{ USE_WEBGL_1_0 }}}</b></div>
+          <div class="half-div hide-able">Size (px): <b>{{{ WIDTH }}}x{{{ HEIGHT }}}</b></div>
+          <div class="half-div hide-able">Use WebGL 2.0: <b>{{{ USE_WEBGL_2_0 }}}</b></div>
+          <div class="half-div hide-able"></div>
+          <div class="half-div hide-able">Use Threads: <b>{{{ USE_THREADS }}}</b></div>
+          <div class="half-div hide-able"></div>
+          <div class="half-div hide-able">Use IndexedDB Caching: <b>{{{ USE_DATA_CACHING }}}</b></div>
+        </div>
+      </div>
+    </div>
+    <script src="TemplateData/UnityDefaultTemplateScript.js"></script>    
+  </body>
+</html>
