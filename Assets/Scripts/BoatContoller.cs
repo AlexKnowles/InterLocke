@@ -6,7 +6,7 @@ public class BoatContoller : MonoBehaviour
 {
     public float Speed;
     public Vector3 Force = new Vector3(0, 0, 1);
-    public Vector3 Position = new Vector3(-1, 0, 0);
+    public Vector3 Position = new Vector3(-1, 0, 1);
 
     private Rigidbody rigidbody;
 
