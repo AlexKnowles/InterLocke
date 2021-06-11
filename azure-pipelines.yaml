@@ -9,10 +9,10 @@ steps:
   inputs:
     targetType: inline
     script: > 
-      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\UnityInstallers
-      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\Unity
-      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\build
-      Invoke-WebRequest -Uri "https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup64.exe" -Outfile "$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe"
+      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\UnityInstallers;
+      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\Unity;
+      New-Item -ItemType directory -Path $(Build.ArtifactStagingDirectory)\build;
+      Invoke-WebRequest -Uri "https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup64.exe" -Outfile "$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe";
 
 - task: CmdLine@2
   inputs:
