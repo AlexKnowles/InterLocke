@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+    $client = new-object System.Net.WebClient
+    $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup64.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe")
+
+- task: CmdLine@2
+  inputs:
+    script: '$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe /S /D=$(Build.ArtifactStagingDirectory)\Unity'
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+    $client = new-object System.Net.WebClient
+    $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup-WebGL-Support-for-Editor.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup-WebGL-Support-for-Editor.exe")
+
+- task: CmdLine@2
+  inputs:
+    script: '$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup-WebGL-Support-for-Editor.exe /S /D=$(Build.ArtifactStagingDirectory)\Unity'
+
+- task: CmdLine@2
+  inputs: 
+    workingDirectory: 
+    script: 'start /WAIT $(Build.ArtifactStagingDirectory)\Unity\Unity.exe -batchmode -quit -projectPath "$(Build.SourcesDirectory)" -buildTarget WebGL -executeMethod Interlocke.CICD.AzureDevOps.Build --BuildOutputDirectory "$(Build.ArtifactStagingDirectory)\build"'
+
+# Publish build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)/build
+    artifactName: 'drop' 
