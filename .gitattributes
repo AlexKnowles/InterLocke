@@ -1,0 +1,142 @@
+# Macro for Unity YAML-based asset files.
+[attr]unityyaml -text merge=unityyamlmerge diff
+
+# Macro for all binary files that should use Git LFS.
+[attr]lfs -text filter=lfs diff=lfs merge=lfs
+
+# Default to auto-normalized line endings.
+* text=auto
+
+# Code
+*.cs text diff=csharp
+ 
+# 3D formats
+*.3dm lfs
+*.3ds lfs
+*.abc lfs
+*.bin lfs
+*.blend lfs
+*.blender lfs
+*.c4d lfs
+*.collada lfs
+*.dae lfs
+*.dfx lfs
+*.dxf lfs
+*.fbx lfs
+*.glb lfs
+*.jas lfs
+*.lwo lfs
+*.lwo2 lfs
+*.lws lfs
+*.lxo lfs
+*.ma lfs
+*.max lfs
+*.mb lfs
+*.obj lfs
+*.ply lfs
+*.skp lfs
+*.stl lfs
+*.ztl lfs
+
+# Audio formats
+*.aif lfs
+*.aiff lfs
+*.it lfs
+*.mod lfs
+*.mp3 lfs
+*.ogg lfs
+*.s3m lfs
+*.wav lfs
+*.xm lfs
+
+# Executables
+*.exe lfs
+*.dll lfs
+*.so lfs
+*.pdb lfs
+*.mdb lfs
+
+# Fonts
+*.otf lfs
+*.ttf lfs
+
+# Image formats
+*.afdesign lfs
+*.afphoto lfs
+*.apng lfs
+*.atsc lfs
+*.bmp lfs
+*.clip lfs
+*.dds lfs
+*.exr lfs
+*.gif lfs
+*.hdr lfs
+*.iff lfs
+*.jpeg lfs
+*.jpg lfs
+*.kpp lfs
+*.kra lfs
+*.leo lfs
+*.pict lfs
+*.png lfs
+*.psd lfs
+*.svg lfs
+*.svgz lfs
+*.tga lfs
+*.tif lfs
+*.tiff lfs
+*.webm lfs
+*.webp lfs
+*.xcf lfs
+
+# Packaging
+*.7z lfs
+*.gz lfs
+*.rar lfs
+*.tar lfs
+*.zip lfs
+
+# Unity Binary Assets
+*.cubemap lfs
+*.unitypackage lfs
+# Note: Unity terrain assets must have "-Terrain" suffix.
+*-[Tt]errain.asset -unityyaml lfs
+# Note: Unity navmesh assets must have "-NavMesh" suffix.
+*-[Nn]av[Mm]esh.asset -unityyaml lfs
+
+# Unity Text Assets
+*.meta unityyaml
+*.unity unityyaml
+*.asset unityyaml
+*.prefab unityyaml
+*.mat unityyaml
+*.anim unityyaml
+*.controller unityyaml
+*.overrideController unityyaml
+*.physicMaterial unityyaml
+*.physicsMaterial2D unityyaml
+*.playable unityyaml
+*.mask unityyaml
+*.brush unityyaml
+*.flare unityyaml
+*.fontsettings unityyaml
+*.guiskin unityyaml
+*.giparams unityyaml
+*.renderTexture unityyaml
+*.spriteatlas unityyaml
+*.terrainlayer unityyaml
+*.mixer unityyaml
+*.shadervariants unityyaml
+*.preset unityyaml
+*.asmdef -text diff
+
+# Video formats
+*.asf lfs
+*.avi lfs
+*.flv lfs
+*.mov lfs
+*.mp4 lfs
+*.mpeg lfs
+*.mpg lfs
+*.ogv lfs
+*.wmv lfs
