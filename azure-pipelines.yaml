@@ -8,9 +8,9 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: inline
-    script: >-
-    $client = new-object System.Net.WebClient
-    $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup64.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe")
+    script: >
+      $client = new-object System.Net.WebClient
+      $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup64.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup64.exe")
 
 - task: CmdLine@2
   inputs:
@@ -19,9 +19,9 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: inline
-    script: >-
-    $client = new-object System.Net.WebClient
-    $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup-WebGL-Support-for-Editor.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup-WebGL-Support-for-Editor.exe")
+    script: >
+      $client = new-object System.Net.WebClient
+      $client.DownloadFile("https://interlockeresources.blob.core.windows.net/unityinstallers/UnitySetup-WebGL-Support-for-Editor.exe","$(Build.ArtifactStagingDirectory)\UnityInstallers\UnitySetup-WebGL-Support-for-Editor.exe")
 
 - task: CmdLine@2
   inputs:
