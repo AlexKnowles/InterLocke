@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoatContoller : MonoBehaviour
 {
-    public float Speed;
+    public float Speed = 1;
     public Vector3 Force = new Vector3(0, 0, 1);
     public Vector3 Position = new Vector3(-1, 0, 1);
 
@@ -13,7 +13,6 @@ public class BoatContoller : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Speed = 1;
     }
 
     private void Update()
