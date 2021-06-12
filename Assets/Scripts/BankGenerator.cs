@@ -56,7 +56,7 @@ public class BankGenerator : MonoBehaviour
     {
         _banksList = new List<GameObject>();
         banksToGenerate = 0;
-        offsetAhead = 6
+        offsetAhead = 6;
 
         foreach (Transform child in transform)
         {
