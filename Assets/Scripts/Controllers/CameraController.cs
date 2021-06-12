@@ -10,9 +10,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.RegisterGameStartMethod(StartGame);
         camera = GetComponent<Camera>();
     }
-
 
     private void FixedUpdate()
     {
@@ -32,5 +32,10 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, centerBetweenTargets, (hypotenuse/ CatchupSlowFactor) * Time.deltaTime);
 
         camera.orthographicSize = Mathf.Max((hypotenuse * 0.776f), 8); 
+    }
+
+    private void StartGame()
+    {
+        transform.position = new Vector3(0, 0, -10);
     }
 }

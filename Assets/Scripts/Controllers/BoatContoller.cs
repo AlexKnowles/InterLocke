@@ -9,6 +9,7 @@ public class BoatContoller : MonoBehaviour
 
 	private Rigidbody2D rigidbodyRef;
 	private HingeJoint2D hingeJoint2D;
+	private Quaternion startingRotation;
 
 	const float BASE_DRAG = 0.2f;
 	const float OPTIMAL_ANGLE = -0.707f;
@@ -22,6 +23,7 @@ public class BoatContoller : MonoBehaviour
 		hingeJoint2D = GetComponent<HingeJoint2D>();
 
 		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
+		startingRotation = transform.rotation;
 	}
 
     private void Update()
@@ -61,7 +63,7 @@ public class BoatContoller : MonoBehaviour
 		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
 
 		transform.position = new Vector3(-3.45f, 0, 0);
-		transform.rotation = Quaternion.identity;
+		transform.rotation = startingRotation;
 	}
 
 	private void AdjustDragBasedOnAngle()
