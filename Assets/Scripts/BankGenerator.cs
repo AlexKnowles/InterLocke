@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class BankGenerator : MonoBehaviour
 {
-    public GameObject BankPrefab;
+    public GameObject[] BankPrefabs; 
+    private BankMetaData[] _bankMetaDatas;
     public GameObject CameraObject;
 
     private Camera Camera;
@@ -16,14 +17,17 @@ public class BankGenerator : MonoBehaviour
     private const float BANK_PREFAB_WIDTH = 20f;
 
     private int banksToGenerate = 0;
-    private int offsetAhead = 10;
+    private int offsetAhead = 6;
+
+    private BankMetaData lastGeneratedBankMetadata;
     
     void Start()
     {
         Camera = CameraObject.GetComponent<Camera>();
+        _bankMetaDatas = BankPrefabs.Select(x => x.GetComponent<BankMetaData>()).ToArray();
         //Generating some banks to start
-        for (int i = -10;i < offsetAhead;i++){
-            GenerateNewBank(i);
+        for (int i = -6;i < offsetAhead;i++){
+            GenerateNewBank(i, 0);
         }
     }
 
@@ -38,14 +42,22 @@ public class BankGenerator : MonoBehaviour
     {
         while (banksToGenerate > 0){
             banksToGenerate--;
-            GenerateNewBank(offsetAhead);
+            int bankIndex = GetSuitableBankIndex();
+            GenerateNewBank(offsetAhead, bankIndex);
             offsetAhead++;
         }
     }
 
-    private void GenerateNewBank(int offsetAhead)
+    private int GetSuitableBankIndex()
     {
-            var newBank = Instantiate(BankPrefab, transform);
+        //This is where the logic for selecting from prefabs will live, but for now, lets go with just 0...
+        return 0;
+    }
+
+    private void GenerateNewBank(int offsetAhead, int bankIndex)
+    {
+            var newBank = Instantiate(BankPrefabs[bankIndex], transform);
+            lastGeneratedBankMetadata = _bankMetaDatas[bankIndex];
             newBank.transform.position = new Vector2(offsetAhead * BANK_PREFAB_WIDTH, 0);
             _banksList.Add(newBank);
     }
