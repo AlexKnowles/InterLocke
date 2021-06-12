@@ -20,9 +20,7 @@ public class BoatContoller : MonoBehaviour
 		GameManager.Instance.RegisterGameStartMethod(StartGame);
 
 		rigidbodyRef = GetComponent<Rigidbody2D>();
-		hingeJoint2D = GetComponent<HingeJoint2D>();
 
-		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
 		startingRotation = transform.rotation;
 	}
 
