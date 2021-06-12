@@ -13,7 +13,7 @@ public class BoatContoller : MonoBehaviour
 
 	const float BASE_DRAG = 0.2f;
 	const float OPTIMAL_ANGLE = -0.707f;
-	const float OPTIMAL_ANGLE_GRACE = 0.005f;
+	const float OPTIMAL_ANGLE_GRACE = 0.009f;
 
 	private void Start()
     {
@@ -57,7 +57,7 @@ public class BoatContoller : MonoBehaviour
 		rigidbodyRef.angularVelocity = 0.0f;
 
 		hingeJoint2D.anchor = new Vector2(0, 1);
-		hingeJoint2D.breakForce = 2.1f;
+		hingeJoint2D.breakForce = 4;//2.1f;
 		hingeJoint2D.autoConfigureConnectedAnchor = false;
 		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
 
