@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!GameManager.Instance.IsGameRunning)
+        {
+            return;
+        }
+
         float distanceBetweenTargets = Mathf.Sqrt(Mathf.Pow(Target2.position.x - Target1.position.x, 2) + Mathf.Pow(Target2.position.y - Target1.position.y, 2));
 
         float desiredX = (distanceBetweenTargets / 2) * ((Target2.position.x - Target1.position.x) / distanceBetweenTargets);

@@ -8,6 +8,7 @@ public class BoatContoller : MonoBehaviour
 	public float DragFactor = 0.01f;
 
 	private Rigidbody2D rigidbodyRef;
+	private HingeJoint2D hingeJoint2D;
 
 	const float BASE_DRAG = 0.2f;
 	const float OPTIMAL_ANGLE = -0.707f;
@@ -15,11 +16,21 @@ public class BoatContoller : MonoBehaviour
 
 	private void Start()
     {
+		GameManager.Instance.RegisterGameStartMethod(StartGame);
+
 		rigidbodyRef = GetComponent<Rigidbody2D>();
+		hingeJoint2D = GetComponent<HingeJoint2D>();
+
+		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
 	}
 
     private void Update()
 	{
+		if (!GameManager.Instance.IsGameRunning)
+		{
+			return;
+		}
+
 		AdjustDragBasedOnAngle();
 
         if (Input.GetAxis("Vertical") != 0)
@@ -31,6 +42,22 @@ public class BoatContoller : MonoBehaviour
 			rigidbodyRef.AddRelativeForce(Vector2.right * torqueOverTime * ForceScale);
 			rigidbodyRef.AddTorque(torqueOverTime*-1);
 		}
+	}
+
+	private void OnJointBreak2D(Joint2D brokenJoint)
+    {
+		GameManager.Instance.SetIsGameOver();
+	}
+
+	private void StartGame()
+	{
+		rigidbodyRef.velocity = Vector2.zero;
+		rigidbodyRef.angularVelocity = 0.0f;
+
+		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
+
+		transform.position = new Vector3(-3.45f, 0, 0);
+		transform.rotation = Quaternion.identity;
 	}
 
 	private void AdjustDragBasedOnAngle()
