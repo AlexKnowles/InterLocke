@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1620032495177243187}
   - component: {fileID: 1322177681631734213}
   m_Layer: 0
-  m_Name: WideRiverBanks
+  m_Name: LowNarrowRiverBanks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9d6503def3c922d8ee5b67e8c3155f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntryTop: 14
+  EntryTop: 4
   EntryBottom: 0
-  ExitTop: 14
+  ExitTop: 4
   ExitBottom: 0
 --- !u!1 &1620032495722700504
 GameObject:
@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620032496078918969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 20, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 1620032495177243187}
   m_RootOrder: 0

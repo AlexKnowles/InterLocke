@@ -14,12 +14,12 @@ public class BankGenerator : MonoBehaviour
 
     private List<GameObject> _banksList = new List<GameObject>();
 
-    private const float BANK_PREFAB_WIDTH = 20f;
-
     private int banksToGenerate = 0;
     private int offsetAhead = 6;
 
     private BankMetaData lastGeneratedBankMetadata;
+
+    private System.Random random = new System.Random();
     
     void Start()
     {
@@ -42,23 +42,35 @@ public class BankGenerator : MonoBehaviour
     {
         while (banksToGenerate > 0){
             banksToGenerate--;
-            int bankIndex = GetSuitableBankIndex();
-            GenerateNewBank(offsetAhead, bankIndex);
+            GenerateNewBank(offsetAhead, GetSuitableBankIndex());
             offsetAhead++;
         }
     }
 
     private int GetSuitableBankIndex()
     {
-        //This is where the logic for selecting from prefabs will live, but for now, lets go with just 0...
-        return 0;
+        //This is garbage, don't @ me
+        List<int> suitableIndexes = new List<int>();
+        int index = 0;
+        foreach(BankMetaData metadata in _bankMetaDatas)
+        {
+            if(
+                (metadata.EntryBottom >= lastGeneratedBankMetadata.EntryBottom && metadata.EntryTop <= lastGeneratedBankMetadata.ExitTop) || //enter narrow/matched from wide
+                metadata.EntryTop >= lastGeneratedBankMetadata.ExitTop && metadata.EntryBottom <= lastGeneratedBankMetadata.ExitBottom //enter wider/same from narrow
+                ){
+                    suitableIndexes.Add(index);
+            }
+            index++;
+        }
+        return suitableIndexes[random.Next(0, suitableIndexes.Count())];
     }
 
     private void GenerateNewBank(int offsetAhead, int bankIndex)
     {
             var newBank = Instantiate(BankPrefabs[bankIndex], transform);
             lastGeneratedBankMetadata = _bankMetaDatas[bankIndex];
-            newBank.transform.position = new Vector2(offsetAhead * BANK_PREFAB_WIDTH, 0);
+            //Be careful on width - this all assumes all banks have the same width at the moment...
+            newBank.transform.position = new Vector2(offsetAhead * BankMetaData.BankWidth, 0);
             _banksList.Add(newBank);
     }
 

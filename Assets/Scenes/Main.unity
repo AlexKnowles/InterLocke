@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -874,6 +874,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BankPrefabs:
   - {fileID: 1620032495177243186, guid: e6391aefce3b6390c9dee421f5fbc3b1, type: 3}
+  - {fileID: 1620032495177243186, guid: 017bb127bf9bf667490d376c53e69283, type: 3}
+  - {fileID: 1620032495177243186, guid: 7bb193c333372b4fd98069423ea7e795, type: 3}
+  - {fileID: 1620032495177243186, guid: b30f5991ebf9377d2acc3d19133ff725, type: 3}
   CameraObject: {fileID: 963194225}
 --- !u!1 &695652447
 GameObject:
