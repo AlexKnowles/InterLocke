@@ -51,9 +51,13 @@ public class BoatContoller : MonoBehaviour
 
 	private void StartGame()
 	{
+		hingeJoint2D = gameObject.AddComponent<HingeJoint2D>();
+
 		rigidbodyRef.velocity = Vector2.zero;
 		rigidbodyRef.angularVelocity = 0.0f;
 
+		hingeJoint2D.anchor = new Vector2(0, 1);
+		hingeJoint2D.breakForce = 2.1f;
 		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
 
 		transform.position = new Vector3(-3.45f, 0, 0);
