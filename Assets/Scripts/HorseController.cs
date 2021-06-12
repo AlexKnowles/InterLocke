@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HorseController : MonoBehaviour
 {
-    public float Speed;
+    public float Speed = 10;
     public Vector2 Force = new Vector2(10, 0);
     public Vector2 Position = new Vector2(0, 10);
 
@@ -18,7 +18,6 @@ public class HorseController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         startingPosition = transform.position;
         startingRotation = transform.rotation;
-        Speed = 1;
     }
 
     private void Update()
