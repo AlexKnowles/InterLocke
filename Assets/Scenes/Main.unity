@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -241,7 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 80
   ForceScale: 2
-  Position: {x: 0, y: -1}
+  Position: {x: 0, y: -1.5}
+  DragFactor: 5
 --- !u!50 &105226921
 Rigidbody2D:
   serializedVersion: 4
@@ -255,7 +256,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -588,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c925e652c9a888892702668c3eb5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 250
+  Speed: 1000
   Force: {x: 100, y: 0}
   Position: {x: 0, y: 10}
 --- !u!233 &281492957
@@ -1120,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 105226924}
-  Speed: 100
+  Speed: 2
 --- !u!1 &1048972062
 GameObject:
   m_ObjectHideFlags: 0
