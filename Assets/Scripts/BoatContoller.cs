@@ -5,25 +5,25 @@ using UnityEngine;
 public class BoatContoller : MonoBehaviour
 {
     public float Speed = 1;
-    public Vector3 Force = new Vector3(0, 0, 1);
-    public Vector3 Position = new Vector3(-1, 0, 1);
+    public Vector2 Force = new Vector2(0, 1);
+    public Vector2 Position = new Vector2(-1, 0);
 
-    private Rigidbody rigidbody;
+    private Rigidbody2D rigidbody;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        rigidbody.AddForceAtPosition(Force * Input.GetAxis("Vertical"), Position, ForceMode.Force);
+        rigidbody.AddForceAtPosition(Force * Input.GetAxis("Vertical"), Position, ForceMode2D.Force);
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
-            transform.position = Vector3.zero;
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.angularVelocity = 0.0f;
+            transform.position = Vector2.zero;
             transform.rotation = Quaternion.identity;
         }
     }
