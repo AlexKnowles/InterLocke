@@ -23,19 +23,45 @@ public class BankGenerator : MonoBehaviour
     
     void Start()
     {
+        GameManager.Instance.RegisterGameStartMethod(StartNewGame);
+
         Camera = CameraObject.GetComponent<Camera>();
-        _bankMetaDatas = BankPrefabs.Select(x => x.GetComponent<BankMetaData>()).ToArray();
+
+        _bankMetaDatas = BankPrefabs.Select(x => x.GetComponent<BankMetaData>()).ToArray();        
+    }
+
+    void Update()
+    {
+        if(!GameManager.Instance.IsGameRunning)
+        {
+            return;
+        }
+
+        GenerateNewBanks();
+        DestroyOutOfFrameBehindBanks();
+    }
+
+    private void StartNewGame()
+    {
+        ClearExistingBanks();
+
         //Generating some banks to start
-        for (int i = -6;i < offsetAhead;i++){
+        for (int i = -6; i < offsetAhead; i++)
+        {
             GenerateNewBank(i, 0);
         }
     }
 
-
-    void Update()
+    private void ClearExistingBanks()
     {
-        GenerateNewBanks();
-        DestroyOutOfFrameBehindBanks();
+        _banksList = new List<GameObject>();
+        banksToGenerate = 0;
+        offsetAhead = 6
+
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     private void GenerateNewBanks()
@@ -49,7 +75,7 @@ public class BankGenerator : MonoBehaviour
 
     private int GetSuitableBankIndex()
     {
-        //This is garbage, don't @ me
+        //This is garbage, don't @ me 
         List<int> suitableIndexes = new List<int>();
         int index = 0;
         foreach(BankMetaData metadata in _bankMetaDatas)
@@ -67,11 +93,11 @@ public class BankGenerator : MonoBehaviour
 
     private void GenerateNewBank(int offsetAhead, int bankIndex)
     {
-            var newBank = Instantiate(BankPrefabs[bankIndex], transform);
-            lastGeneratedBankMetadata = _bankMetaDatas[bankIndex];
-            //Be careful on width - this all assumes all banks have the same width at the moment...
-            newBank.transform.position = new Vector2(offsetAhead * BankMetaData.BankWidth, 0);
-            _banksList.Add(newBank);
+        var newBank = Instantiate(BankPrefabs[bankIndex], transform);
+        lastGeneratedBankMetadata = _bankMetaDatas[bankIndex];
+        //Be careful on width - this all assumes all banks have the same width at the moment...
+        newBank.transform.position = new Vector2(offsetAhead * BankMetaData.BankWidth, 0);
+        _banksList.Add(newBank);
     }
 
     private void DestroyOutOfFrameBehindBanks() {
