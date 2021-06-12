@@ -14,7 +14,11 @@ public class Rope : MonoBehaviour
 
     private void GenerateRope()
     {
-        Rigidbody2D lastLinkObject = CreateLink(EndObject1.GetComponent<Rigidbody2D>());
+        GameObject newLinkObject = Instantiate(LinkPrefab, transform);
+        HingeJoint2D newLinkjoint = newLinkObject.GetComponent<HingeJoint2D>();
+
+        Rigidbody2D lastLinkObject = newLinkObject.GetComponent<Rigidbody2D>();
+        newLinkjoint.connectedBody = lastLinkObject;
 
         ConnectToEndObject(EndObject1, lastLinkObject);
 
