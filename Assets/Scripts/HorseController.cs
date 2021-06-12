@@ -22,7 +22,7 @@ public class HorseController : MonoBehaviour
 
     private void Update()
     {
-        rigidbody.AddForceAtPosition(Force * Input.GetAxis("Horizontal"), Position, ForceMode2D.Force);
+        rigidbody.AddForceAtPosition(Force * Speed * Time.deltaTime, Position, ForceMode2D.Force);
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {

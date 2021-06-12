@@ -4,27 +4,41 @@ using UnityEngine;
 
 public class BoatContoller : MonoBehaviour
 {
-    public float Speed = 1;
-    public Vector2 Force = new Vector2(0, 1);
-    public Vector2 Position = new Vector2(-1, 0);
+	public float accel = 10f;
+	public float turnSpeed = 3f;
+	public float maxSpeed = 8f;
+	
+	private Rigidbody2D rigidbody;
 
-    private Rigidbody2D rigidbody;
-
-    private void Start()
+	private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
-    }
+		rigidbody = GetComponent<Rigidbody2D>();
 
-    private void Update()
-    {
-        rigidbody.AddForceAtPosition(Force * Input.GetAxis("Vertical"), Position, ForceMode2D.Force);
+	}
 
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            rigidbody.velocity = Vector2.zero;
-            rigidbody.angularVelocity = 0.0f;
-            transform.position = Vector2.zero;
-            transform.rotation = Quaternion.identity;
-        }
-    }
+    void Update()
+	{
+
+		////if up pressed
+		//if (Input.GetAxis("Vertical") > 0)
+		//{
+		//	//add force
+		//	rigidbody.AddRelativeForce(Vector2.up * accel);
+
+		//	//if we are going too fast, cap speed
+		//	if (rigidbody.velocity.magnitude > maxSpeed)
+		//	{
+		//		rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
+		//	}
+		//}
+
+		//if right/left pressed add torque to turn
+		if (Input.GetAxis("Vertical") != 0)
+		{
+			//scale the amount you can turn based on current velocity so slower turning below max speed
+			float scale = Mathf.Lerp(0f, turnSpeed, (rigidbody.velocity.magnitude / maxSpeed));
+			//axis is opposite what we want by default
+			rigidbody.AddTorque(-Input.GetAxis("Vertical") * scale * Time.deltaTime);
+		}
+	}
 }
