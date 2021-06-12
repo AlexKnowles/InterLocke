@@ -2,16 +2,30 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform Target;
-    public float Speed;
+    public Transform Target1;
+    public Transform Target2;
+    public float CatchupSlowFactor;
+
+    private Camera camera;
+
+    private void Start()
+    {
+        camera = GetComponent<Camera>();
+    }
 
 
     private void FixedUpdate()
     {
-        Vector3 fixedZTargetPosition = new Vector3(Target.position.x, Target.position.y, transform.position.z);
+        float distanceBetweenTargets = Mathf.Sqrt(Mathf.Pow(Target2.position.x - Target1.position.x, 2) + Mathf.Pow(Target2.position.y - Target1.position.y, 2));
 
-        float hypotenuse = Mathf.Sqrt(Mathf.Pow(Target.position.x, 2) + Mathf.Pow(Target.position.y, 2));
+        float desiredX = (distanceBetweenTargets / 2) * ((Target2.position.x - Target1.position.x) / distanceBetweenTargets);
+        float desiredY = (distanceBetweenTargets / 2) * ((Target2.position.y - Target1.position.y) / distanceBetweenTargets);
 
-        transform.position = Vector3.Lerp(transform.position, fixedZTargetPosition, (hypotenuse/Speed) * Time.deltaTime);
+        Vector3 centerBetweenTargets = new Vector3(Target1.position.x + desiredX, Target1.position.y + desiredY, transform.position.z);
+        float hypotenuse = (distanceBetweenTargets / 2);
+
+        transform.position = Vector3.Lerp(transform.position, centerBetweenTargets, (hypotenuse/ CatchupSlowFactor) * Time.deltaTime);
+
+        camera.orthographicSize = Mathf.Max((hypotenuse * 0.776f), 8); 
     }
 }
