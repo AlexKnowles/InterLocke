@@ -18,10 +18,10 @@ public class Paralax : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	float temp = Camera.transform.position.x * (1 - ParalaxEffect);
-        float dist = Camera.transform.position.x * ParalaxEffect;
+    	float temp = Camera.transform.position.x * ParalaxEffect;
+        float dist = Camera.transform.position.x * (1 - ParalaxEffect);
 
-        transform.position = new Vector2(startpos + dist, transform.position.y);
+        transform.position = new Vector2((startpos + dist) , transform.position.y);
 
         if (temp > startpos + length) startpos += length;
         if (temp < startpos - length) startpos -= length;
