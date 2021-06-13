@@ -59,7 +59,7 @@ public class BoatContoller : MonoBehaviour
 		hingeJoint2D.anchor = new Vector2(0, 1);
 		hingeJoint2D.breakForce = 4;//2.1f;
 		hingeJoint2D.autoConfigureConnectedAnchor = false;
-		hingeJoint2D.connectedAnchor = new Vector2(-3.45f, 0);
+		hingeJoint2D.connectedAnchor = new Vector2(1f, 0);
 
 		transform.position = new Vector3(-3.45f, 0, 0);
 		transform.rotation = startingRotation;
