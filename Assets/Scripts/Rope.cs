@@ -19,12 +19,24 @@ public class Rope : MonoBehaviour
     {
         if(GameManager.Instance.IsGameOver && ropeExists)
         {
-            StartCoroutine(DestroyRope());            
+            StartCoroutine(DestroyRopeInASecond());            
+        }
+    }
+
+    public IEnumerator DestroyRopeInASecond()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (!GameManager.Instance.IsGameRunning)
+        {
+            DestroyRope();
         }
     }
 
     private void GenerateRope()
     {
+        DestroyRope();
+
         GameObject newLinkObject = Instantiate(LinkPrefab, transform);
         HingeJoint2D newLinkjoint = newLinkObject.GetComponent<HingeJoint2D>();
 
@@ -59,10 +71,8 @@ public class Rope : MonoBehaviour
         return newLinkObject.GetComponent<Rigidbody2D>();
     }
 
-    public IEnumerator DestroyRope()
+    private void DestroyRope()
     {
-        yield return new WaitForSeconds(1);
-
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
