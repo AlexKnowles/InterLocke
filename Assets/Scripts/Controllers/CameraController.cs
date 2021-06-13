@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, centerBetweenTargets, (hypotenuse/ CatchupSlowFactor) * Time.deltaTime);
 
-        camera.orthographicSize = Mathf.Max((hypotenuse), 8); 
+        camera.orthographicSize = Mathf.Max((hypotenuse), 10); 
     }
 
     private void StartGame()
