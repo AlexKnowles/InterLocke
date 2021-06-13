@@ -69,7 +69,7 @@ public class Rope : MonoBehaviour
 
         ConnectToEndObject(EndObject1, lastLinkObject);
 
-        jointGameObjects.Add(EndObject1);
+        jointGameObjects.Add(EndObject1.transform.Find("RopePoint").gameObject);
         jointGameObjects.Add(newLinkObject);
 
         for (var currentLinkId = 0; currentLinkId < NumberOfLinks; currentLinkId++)
