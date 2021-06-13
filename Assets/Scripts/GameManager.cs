@@ -15,12 +15,20 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject MainMenuUI;
+    public GameObject GameOverUI;
 
     private Action StartGameMethods;
     private bool isRunning;
 
+    public void ShowMainMenu()
+    {
+        MainMenuUI.SetActive(true);
+        GameOverUI.SetActive(false);
+    }
+
     public  void SetIsGameOver()
     {
+        GameOverUI.SetActive(true);
         IsGameOver = true;
         isRunning = false;
     }
@@ -28,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         MainMenuUI.SetActive(false);
+        GameOverUI.SetActive(false);
 
         StartGameMethods();
         IsGameOver = false;
@@ -36,6 +45,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        MainMenuUI.SetActive(true);
+        GameOverUI.SetActive(false);
+
         Instance = this;
         IsGameOver = false;
         isRunning = false;
