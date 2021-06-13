@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44719166, g: 0.49245965, b: 0.55014354, a: 1}
+  m_IndirectSpecularColor: {r: 0.44719136, g: 0.49245912, b: 0.55014306, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,6 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children:
   - {fileID: 531887769}
+  - {fileID: 1915121833}
   - {fileID: 247558492}
   m_Father: {fileID: 278458661}
   m_RootOrder: 3
@@ -329,7 +330,7 @@ Transform:
   m_LocalScale: {x: 4.35, y: 10.95, z: 1}
   m_Children: []
   m_Father: {fileID: 105226924}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!60 &247558493
 PolygonCollider2D:
@@ -1028,11 +1029,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &531887769 stripped
+--- !u!4 &531887769
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f6367ae6df412b46b8cf73a0851b989, type: 3}
   m_PrefabInstance: {fileID: 316025984}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092507272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 105226924}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565832405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1091,8 @@ MonoBehaviour:
   - {fileID: 1620032495177243186, guid: 017bb127bf9bf667490d376c53e69283, type: 3}
   - {fileID: 1620032495177243186, guid: 7bb193c333372b4fd98069423ea7e795, type: 3}
   - {fileID: 1620032495177243186, guid: b30f5991ebf9377d2acc3d19133ff725, type: 3}
+  - {fileID: 1620032495177243186, guid: 6de737c0529ed7b158fa3204b13df278, type: 3}
+  - {fileID: 1620032495177243186, guid: ce00786d9e01e86fc92c11dc8b8e3cbc, type: 3}
   CameraObject: {fileID: 963194225}
 --- !u!1 &705507993
 GameObject:
@@ -1462,7 +1474,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: f73404484b42bd947b627c507e316530, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2418,6 +2430,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1915121832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1915121833}
+  m_Layer: 0
+  m_Name: 3dBoat (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1915121833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915121832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 105226924}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2092507272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531887769}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &2132742452
 GameObject:
   m_ObjectHideFlags: 0

@@ -80,15 +80,20 @@ public class BankGenerator : MonoBehaviour
         int index = 0;
         foreach(BankMetaData metadata in _bankMetaDatas)
         {
-            if(
-                (metadata.EntryBottom >= lastGeneratedBankMetadata.EntryBottom && metadata.EntryTop <= lastGeneratedBankMetadata.ExitTop) || //enter narrow/matched from wide
-                metadata.EntryTop >= lastGeneratedBankMetadata.ExitTop && metadata.EntryBottom <= lastGeneratedBankMetadata.ExitBottom //enter wider/same from narrow
-                ){
+            if(BanksLineUp(metadata, lastGeneratedBankMetadata))
+            {
                     suitableIndexes.Add(index);
             }
             index++;
         }
         return suitableIndexes[random.Next(0, suitableIndexes.Count())];
+    }
+
+    private static bool BanksLineUp(BankMetaData potential, BankMetaData previous){
+        return (potential.EntryTop >= previous.ExitTop && potential.EntryBottom <= previous.ExitBottom)
+            || (potential.EntryTop == previous.ExitTop && potential.EntryBottom == previous.ExitBottom)
+            || (potential.EntryTop <= previous.ExitTop && potential.EntryBottom == previous.ExitBottom)
+            || (potential.EntryTop == previous.ExitTop && potential.EntryBottom >= previous.ExitBottom);
     }
 
     private void GenerateNewBank(int offsetAhead, int bankIndex)
