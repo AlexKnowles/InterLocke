@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject MainMenuUI;
+
     private Action StartGameMethods;
     private bool isRunning;
 
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        MainMenuUI.SetActive(false);
+
         StartGameMethods();
         IsGameOver = false;
         isRunning = true;
