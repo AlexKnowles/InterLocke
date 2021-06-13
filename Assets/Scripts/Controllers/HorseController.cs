@@ -18,7 +18,7 @@ public class HorseController : MonoBehaviour
         rigidbodyRef = GetComponent<Rigidbody2D>();
         hingeJoint2D = GetComponent<HingeJoint2D>();
 
-        hingeJoint2D.connectedAnchor = new Vector2(10.53f, -7f);
+        hingeJoint2D.connectedAnchor = new Vector2(-11f, -7f);
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class HorseController : MonoBehaviour
 
         hingeJoint2D.connectedAnchor = new Vector2(10.53f, -7f);
 
-        transform.position = new Vector3(10.53f, -7f, 0);
+        transform.position = new Vector3(-11f, -7f, 0);
         transform.rotation = Quaternion.identity;
     }
 }
