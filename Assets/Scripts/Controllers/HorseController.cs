@@ -7,6 +7,7 @@ public class HorseController : MonoBehaviour
     public float Speed = 10;
     public Vector2 Force = new Vector2(10, 0);
     public Vector2 Position = new Vector2(0, 10);
+    public GameObject Model;
 
     private Rigidbody2D rigidbodyRef;
     private HingeJoint2D hingeJoint2D;
@@ -19,6 +20,8 @@ public class HorseController : MonoBehaviour
         hingeJoint2D = GetComponent<HingeJoint2D>();
 
         hingeJoint2D.connectedAnchor = new Vector2(-11f, -7f);
+
+        Model.SetActive(false);
     }
 
     private void Update()
@@ -33,6 +36,8 @@ public class HorseController : MonoBehaviour
 
     private void StartGame()
     {
+        Model.SetActive(true);
+
         rigidbodyRef.velocity = Vector2.zero;
         rigidbodyRef.angularVelocity = 0.0f;
 

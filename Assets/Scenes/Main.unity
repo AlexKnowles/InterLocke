@@ -159,6 +159,7 @@ MonoBehaviour:
   ForceScale: 2
   Position: {x: 0, y: -1.5}
   DragFactor: 2
+  Model: {fileID: 247558491}
 --- !u!50 &105226921
 Rigidbody2D:
   serializedVersion: 4
@@ -675,6 +676,7 @@ MonoBehaviour:
   Speed: 1000
   Force: {x: 100, y: 0}
   Position: {x: 0, y: 10}
+  Model: {fileID: 1075823805}
 --- !u!233 &281492957
 HingeJoint2D:
   m_ObjectHideFlags: 0

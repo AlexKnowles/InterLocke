@@ -6,6 +6,7 @@ public class BoatContoller : MonoBehaviour
 	public float ForceScale = 2f;
 	public Vector2 Position = new Vector2(0, -1);
 	public float DragFactor = 0.01f;
+	public GameObject Model;
 
 	private Rigidbody2D rigidbodyRef;
 	private HingeJoint2D hingeJoint2D;
@@ -22,6 +23,8 @@ public class BoatContoller : MonoBehaviour
 		rigidbodyRef = GetComponent<Rigidbody2D>();
 
 		startingRotation = transform.rotation;
+
+		Model.SetActive(false);
 	}
 
     private void Update()
@@ -51,6 +54,7 @@ public class BoatContoller : MonoBehaviour
 
 	private void StartGame()
 	{
+		Model.SetActive(true);
 		hingeJoint2D = gameObject.AddComponent<HingeJoint2D>();
 
 		rigidbodyRef.velocity = Vector2.zero;
